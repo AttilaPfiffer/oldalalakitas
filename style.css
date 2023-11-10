@@ -1,0 +1,123 @@
+* { /*minden html elemre érvényes*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* width értékbe a padding és a border is beletartozik*/
+}
+header, nav, article, aside, footer {
+    border: 1px solid gray;
+    padding: 10px;
+}
+body {
+    background-color: black;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    color: white;
+}
+main {
+    background-image:url(kepek/icc.webp);
+    /*szülőelem, ő tartalmazza a többit, amit el akarok rendezni a rácson*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 50px auto 50px;
+    grid-template-areas: 
+            "h h h h h"
+            "n n n n n"
+            "b a a a j"
+            "f f f f f";
+}
+ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    border-radius: green;
+}
+a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: auto;
+    font-size: 20px;
+}
+li {
+    background-color: black;
+    text-align: center;
+}
+article img {
+    width: 100%;
+}
+article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+div {
+    border: 1px solid black;
+    padding: 5px;
+}
+/* gyerekeknek nevet adunk*/
+header {
+    grid-area: h;
+}
+nav {
+    grid-area: n;
+}
+article {
+    grid-area: a;
+}
+footer {
+    grid-area: f;
+}
+aside {
+    grid-area: h;
+}
+aside#bal {
+    grid-area: b;
+}
+aside#jobb {
+    grid-area: j;
+}
+
+/* töréspont media queryvel */
+/* tablet nézet*/
+@media screen and (max-width: 700px){
+    body{
+        width: 100%;
+        font-size: 2vw;
+    }
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px auto auto 50px;
+        grid-template-areas: 
+                "h"
+                "n"
+                "a"
+                "j"
+                "b"
+                "f" ;
+    }
+    article {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* mobil nézet*/
+@media screen and (max-width: 450px){
+    body{
+        width: 100%;
+        font-size: 5vw;
+    }
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px auto auto 50px;
+        grid-template-areas: 
+                "h"
+                "n"
+                "a"
+                "j"
+                "b"
+                "f";
+    }
+    article {
+        grid-template-columns: 1fr;
+    }
+}
